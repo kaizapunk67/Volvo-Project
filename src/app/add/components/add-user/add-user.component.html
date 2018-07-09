@@ -1,0 +1,50 @@
+        <p>Add Details</p>
+        <div class="form-group" [formGroup]="rForm">
+        <mat-form-field>
+          Name:
+        <input type="text" matInput class="formControl" formControlName="name">
+        
+        </mat-form-field>
+        <span class="alert" *ngIf="!rForm.controls['name'].valid && rForm.controls['name'].touched">*Name Required</span>
+        <br>
+        <mat-form-field>
+          Surname:
+        <input type="text" matInput class="formControl" formControlName="surname">
+        </mat-form-field>
+        <span class="alert" *ngIf="!rForm.controls['surname'].valid && rForm.controls['surname'].touched">*Surname Required</span>
+        <br>
+        <mat-form-field>
+          Phone:
+          <input type="text" matInput class="formControl" formControlName="phone">
+        </mat-form-field>
+        <span class="alert" *ngIf="!rForm.controls['phone'].valid && rForm.controls['phone'].touched">*Surname Required</span>
+        <br>
+        <mat-form-field>
+          Street:
+          <input type="text" matInput class="formControl" formControlName="street">
+        </mat-form-field>
+        <span class="alert" *ngIf="!rForm.controls['street'].valid && rForm.controls['street'].touched">*Street Required</span>
+        <br>
+        <mat-form-field>
+          City:
+          <input type="text" matInput class="formControl" formControlName="city">
+        </mat-form-field>
+        <span class="alert" *ngIf="!rForm.controls['city'].valid && rForm.controls['city'].touched">*City Required</span>
+        <br>
+        <mat-form-field>
+            <input matInput [matDatepicker]="picker1" placeholder="BirthDate" formControlName="date">
+            <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+            <mat-datepicker #picker1></mat-datepicker>
+          </mat-form-field>
+          <span class="alert" *ngIf="!rForm.controls['date'].valid && rForm.controls['date'].touched">*Please enter your birthdate</span>
+          <br>
+        <mat-form-field>
+            Number:
+            <input type="text" matInput class="formControl" formControlName="number">
+          </mat-form-field>
+          <span class="alert" *ngIf="!rForm.controls['number'].valid && rForm.controls['number'].touched">*Number Required</span>
+        <div>
+          <button mat-button (click)="clear()">Clear</button>
+          <button mat-button [disabled]="!rForm.valid" (click)="onregister()" >Add</button>
+        </div>
+      </div>

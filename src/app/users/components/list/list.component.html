@@ -1,0 +1,61 @@
+<br>
+<div class="row">
+<div class="col-md-7">
+<h5>List of Users</h5>
+</div>
+<div class="col-md-5"><h6>Search By Name:</h6>
+  <mat-form-field>
+      <input type="text" matInput [matAutocomplete]="auto" [formControl]="nameValue" >
+      <mat-autocomplete #auto="matAutocomplete">
+          <mat-option *ngFor="let namep of filteredOptions | async" [value]="namep" (onSelectionChange)="search(namep)">
+          {{namep}}  
+          </mat-option>
+      </mat-autocomplete>
+  </mat-form-field>
+    <div class="btn btn-primary" (click)="clear()">Clear</div>
+</div>
+</div>
+<br>
+<!-- <div class="row" *ngFor="let x of userDetails">
+  <span>{{x.id}}</span>,
+  <span>{{x.name}}</span>,
+  <span>{{x.surname}}</span>,
+  <span>{{x.birthDate}}</span>,
+  <span>{{x.phone}}</span>,
+  <span>{{x.city}}</span>,
+  <span>{{x.street}}</span>,
+  <span>{{x.number}}</span>,
+  <span><button type="button" class="btn btn-primary">Delete</button></span>,
+  <span><button type="button" class="btn btn-primary">Edit</button></span>,
+
+</div> -->
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Name</th>
+      <th scope="col">Surname</th>
+      <th scope="col">BirthName</th>
+      <th scope="col">Phone</th>
+      <th scope="col">City</th>
+      <th scope="col">Street</th>
+      <th scope="col">Number</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let x of userDetails; let i = index;">
+      <td>{{x.id}}</td>
+      <td>{{x.name}}</td>
+      <td>{{x.surname}}</td>
+      <td>{{x.birthDate}}</td>
+      <td>{{x.phone}}</td>
+      <td>{{x.city}}</td>
+      <td>{{x.street}}</td>
+      <td>{{x.number}}</td>
+      <td><button class="btn btn-primary" (click)="delete(i,x)">Delete</button></td>
+      <td><button class="btn btn-primary" (click)="openDialog(x)">Edit</button></td>
+    </tr>
+  </tbody>
+</table>
